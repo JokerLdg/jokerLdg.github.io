@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    백준 2193번 이친수 (python 파이썬) - Tech
+    
+  </title>
+
+  <meta name="description" content="백준 2193번 이친수 문제를 Python으로 해결한 문제이다.">
+  <!-- google 웹마스터 -->
+  <meta name="google-site-verification" content="1M5pUHiID88fUVGyUOZvd5xyyGEcU37L6sdv7fkh8xg" />
+  <!-- //google 웹마스터 -->
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/algorithm/2021/07/25/pinary-number.html">
+  <link rel="alternate" type="application/rss+xml" title="Tech" href="/feed.xml">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/custom.css">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Tech</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+		<li class="nav-item"><a class="nav-link">Category</a>
+			<ul class="navbar-nav ml-auto">
+			
+			
+			  
+								
+					<li class="nav-item">
+						<a class="nav-link category-link " href="/algorithm">Algorithm</a>
+					</li>
+				
+			  
+			
+			  
+								
+					<li class="nav-item">
+						<a class="nav-link category-link " href="/architecture">Architecture</a>
+					</li>
+				
+			  
+			
+			  
+								
+					<li class="nav-item">
+						<a class="nav-link category-link " href="/cpp">C/C++</a>
+					</li>
+				
+			  
+			
+			  
+								
+					<li class="nav-item">
+						<a class="nav-link category-link " href="/english">English</a>
+					</li>
+				
+			  
+			
+			  
+								
+					<li class="nav-item">
+						<a class="nav-link category-link " href="/java">Java</a>
+					</li>
+				
+			  
+			
+			  
+				
+			  
+			
+			  
+			
+			  
+			
+			  
+			
+			  
+			
+			</ul>
+		</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+  <header class="masthead" style="height:200px; margin-bottom:30px; background-color:#fff !important">
+    <div class="overlay" style="background-color:#fff !important"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-md-10 mx-auto">
+          <div class="post-heading" style="padding:80px 0; color:#000 !important;">
+            <h1 style="font-size:40px !important;">백준 2193번 이친수 (python 파이썬)</h1>
+            <h2 class="subheading" style="font-size:22px !important; color:#868e96 !important;">
+				July 25, 2021
+			</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="div_container_post" class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 mx-auto">
+
+        <p>백준 2193번 이친수 문제를 Python으로 해결한 문제이다.</p>
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/2193" target="_blank">백준 2193번 이친수 문제 링크</a></li>
+</ul>
+
+<h3 id="문제">문제</h3>
+<p>0과 1로만 이루어진 수를 이진수라 한다. 이러한 이진수 중 특별한 성질을 갖는 것들이 있는데, 이들을 이친수(pinary number)라 한다. 이친수는 다음의 성질을 만족한다.</p>
+
+<ol>
+  <li>이친수는 0으로 시작하지 않는다.</li>
+  <li>이친수에서는 1이 두 번 연속으로 나타나지 않는다. 즉, 11을 부분 문자열로 갖지 않는다.</li>
+</ol>
+
+<p>예를 들면 1, 10, 100, 101, 1000, 1001 등이 이친수가 된다. 하지만 0010101이나 101101은 각각 1, 2번 규칙에 위배되므로 이친수가 아니다.</p>
+
+<p>N(1 ≤ N ≤ 90)이 주어졌을 때, N자리 이친수의 개수를 구하는 프로그램을 작성하시오.</p>
+
+<h3 id="입력">입력</h3>
+<p>첫째 줄에 N이 주어진다.</p>
+
+<h3 id="출력">출력</h3>
+<p><strong><u>첫째 줄에 N자리 이친수의 개수를 출력한다.</u></strong></p>
+
+<h3 id="문제풀이">문제풀이</h3>
+<p>다음 자리수의 따른 계산 식이다.<br />
+1 : 1<br />
+2 : 10<br />
+3 : 100, 101<br />
+4 : 1000, 1010, 1001 <br />
+5 : 10000, 10100, 10010, 10001, 10101<br />
+6 : 100000, 101000, 100100, 100010, 101010, 100001, 101001, 100101</p>
+
+<p>[1, 1, 2, 3, 5, 8] 으로 다음걸 자세히 보면 피보나치 수열로 증가하는걸 볼 수 있다.<br />
+그래서 dp에 피보나치 수열과 동일하게 90자리 수까지 저장한 후 N-1번째의 값을 출력하면 된다.</p>
+
+<h3 id="코드">코드</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">read</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span><span class="p">().</span><span class="n">rstrip</span><span class="p">()</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">read</span><span class="p">())</span>
+
+<span class="n">dp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">90</span><span class="p">):</span>
+    <span class="n">dp</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div></div>
+
+
+        <hr>
+        <div class="clearfix">
+          
+          <a class="btn btn-primary float-left" href="/algorithm/2021/07/24/wine.html" data-toggle="tooltip" data-placement="top" title="백준 2156번 포도주 시식 (python 파이썬)">&larr; 이전<span class="d-none d-md-inline">
+              게시물</span></a>
+          
+          
+        </div>
+		
+		<br><br>
+		<div id="disqus_thread"></div>
+		  <script>
+		  /**
+		  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+		  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+		  /*
+		  var disqus_config = function () {
+		  this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+		  this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		  };
+		  */
+		  (function() { // DON'T EDIT BELOW THIS LINE
+		  var d = document, s = d.createElement('script');
+		  s.src = 'https://jokerldg.disqus.com/embed.js';
+		  s.setAttribute('data-timestamp', +new Date());
+		  (d.head || d.body).appendChild(s);
+		  })();
+		  </script>
+		  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+		</div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/jokerLdg">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; jokerLdg 2021</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+</body>
+
+</html>
