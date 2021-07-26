@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
-    백준 2193번 이친수 (python 파이썬) - Tech
+    백준 11727번 2xn 타일링 2 (python 파이썬) - Tech
     
   </title>
 
-  <meta name="description" content="백준 2193번 이친수 문제를 Python으로 해결한 문제이다.">
+  <meta name="description" content="백준 11727번 2xn 타일링 2 문제를 Python으로 해결한 문제이다.">
   <!-- google 웹마스터 -->
   <meta name="google-site-verification" content="1M5pUHiID88fUVGyUOZvd5xyyGEcU37L6sdv7fkh8xg" />
   <!-- //google 웹마스터 -->
@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/algorithm/2021/07/25/pinary-number.html">
+  <link rel="canonical" href="http://localhost:4000/algorithm/2021/07/26/2xn-tiling2.html">
   <link rel="alternate" type="application/rss+xml" title="Tech" href="/feed.xml">
   <link rel="stylesheet" href="/assets/css/syntax.css">
   <link rel="stylesheet" href="/assets/css/custom.css">
@@ -122,9 +122,9 @@
       <div class="row">
         <div class="col-lg-10 col-md-10 mx-auto">
           <div class="post-heading" style="padding:80px 0; color:#000 !important;">
-            <h1 style="font-size:40px !important;">백준 2193번 이친수 (python 파이썬)</h1>
+            <h1 style="font-size:40px !important;">백준 11727번 2xn 타일링 2 (python 파이썬)</h1>
             <h2 class="subheading" style="font-size:22px !important; color:#868e96 !important;">
-				July 25, 2021
+				July 26, 2021
 			</h2>
           </div>
         </div>
@@ -136,67 +136,58 @@
     <div class="row">
       <div class="col-lg-10 col-md-10 mx-auto">
 
-        <p>백준 2193번 이친수 문제를 Python으로 해결한 문제이다.</p>
+        <p>백준 11727번 2xn 타일링 2 문제를 Python으로 해결한 문제이다.</p>
 
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/2193" target="_blank">백준 2193번 이친수 문제 링크</a></li>
+  <li><a href="https://www.acmicpc.net/problem/11727" target="_blank">백준 11727번 2xn 타일링 2 문제 링크</a></li>
 </ul>
 
 <h3 id="문제">문제</h3>
-<p>0과 1로만 이루어진 수를 이진수라 한다. 이러한 이진수 중 특별한 성질을 갖는 것들이 있는데, 이들을 이친수(pinary number)라 한다. 이친수는 다음의 성질을 만족한다.</p>
+<p>2×n 직사각형을 1×2, 2×1과 2×2 타일로 채우는 방법의 수를 구하는 프로그램을 작성하시오.</p>
 
-<ol>
-  <li>이친수는 0으로 시작하지 않는다.</li>
-  <li>이친수에서는 1이 두 번 연속으로 나타나지 않는다. 즉, 11을 부분 문자열로 갖지 않는다.</li>
-</ol>
+<p>아래 그림은 2×17 직사각형을 채운 한가지 예이다.</p>
 
-<p>예를 들면 1, 10, 100, 101, 1000, 1001 등이 이친수가 된다. 하지만 0010101이나 101101은 각각 1, 2번 규칙에 위배되므로 이친수가 아니다.</p>
-
-<p>N(1 ≤ N ≤ 90)이 주어졌을 때, N자리 이친수의 개수를 구하는 프로그램을 작성하시오.</p>
+<p align="center"><img src="/img/algorithm/tilling2.PNG" /></p>
 
 <h3 id="입력">입력</h3>
-<p>첫째 줄에 N이 주어진다.</p>
+<p>첫째 줄에 n이 주어진다. (1 ≤ n ≤ 1,000)</p>
 
 <h3 id="출력">출력</h3>
-<p><strong><u>첫째 줄에 N자리 이친수의 개수를 출력한다.</u></strong></p>
+<p><strong><u>첫째 줄에 2×n 크기의 직사각형을 채우는 방법의 수를 10,007로 나눈 나머지를 출력한다.</u></strong></p>
 
 <h3 id="문제풀이">문제풀이</h3>
-<p>다음 자리수의 따른 계산 식이다.<br />
-1 : 1<br />
-2 : 10<br />
-3 : 100, 101<br />
-4 : 1000, 1010, 1001 <br />
-5 : 10000, 10100, 10010, 10001, 10101<br />
-6 : 100000, 101000, 100100, 100010, 101010, 100001, 101001, 100101</p>
+<p>다음과 같은 직사각형의 개수를 구할 수 있다.<br />
+2x1 직사각형 : l     (1 가지)<br />
+2x2 직사각형 : ll, =, ㅁ (3 가지)<br />
+2x3 직사각형 : lll, l=, =l, ㅁl, lㅁ (5 가지)<br />
+2x4 직사각형 : llll, ll=, l=l, =ll, ==, ㅁㅁ, ㅁll, ㅁ=, lㅁl, llㅁ, =ㅁ (11 가지)</p>
 
-<p>[1, 1, 2, 3, 5, 8] 으로 다음걸 자세히 보면 피보나치 수열로 증가하는걸 볼 수 있다.<br />
-그래서 dp에 피보나치 수열과 동일하게 90자리 수까지 저장한 후 N-1번째의 값을 출력하면 된다.</p>
+<p>다음 규칙을 살펴보면 <strong><u>i-1 + ((i-2) * 2)</u></strong> 과 같이 증가하는걸 볼 수 있다.</p>
+
+<p>n번째 까지 dp를 위의 식과같이 동일하게 하여 append후에 dp[n] % 10007를 하여 출력하면 된다.</p>
 
 <h3 id="코드">코드</h3>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="n">read</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span><span class="p">().</span><span class="n">rstrip</span><span class="p">()</span>
 
-<span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">read</span><span class="p">())</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">read</span><span class="p">())</span>
 
-<span class="n">dp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">dp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">90</span><span class="p">):</span>
-    <span class="n">dp</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">dp</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="p">((</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">%</span> <span class="mi">10007</span><span class="p">)</span>
 </code></pre></div></div>
 
 
         <hr>
         <div class="clearfix">
           
-          <a class="btn btn-primary float-left" href="/algorithm/2021/07/24/wine.html" data-toggle="tooltip" data-placement="top" title="백준 2156번 포도주 시식 (python 파이썬)">&larr; 이전<span class="d-none d-md-inline">
+          <a class="btn btn-primary float-left" href="/algorithm/2021/07/25/pinary-number.html" data-toggle="tooltip" data-placement="top" title="백준 2193번 이친수 (python 파이썬)">&larr; 이전<span class="d-none d-md-inline">
               게시물</span></a>
           
-          
-          <a class="btn btn-primary float-right" href="/algorithm/2021/07/26/2xn-tiling2.html" data-toggle="tooltip" data-placement="top" title="백준 11727번 2xn 타일링 2 (python 파이썬)">다음<span class="d-none d-md-inline">
-              게시물</span> &rarr;</a>
           
         </div>
 		
