@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
-    백준 2293번 동전 1 (python 파이썬) - Tech
+    백준 1010번 다리 놓기 (python 파이썬) - Tech
     
   </title>
 
-  <meta name="description" content="백준 2293번 동전 1 문제를 Python으로 해결한 문제이다.">
+  <meta name="description" content="백준 1010번 다리 놓기 문제를 Python으로 해결한 문제이다.">
   <!-- google 웹마스터 -->
   <meta name="google-site-verification" content="1M5pUHiID88fUVGyUOZvd5xyyGEcU37L6sdv7fkh8xg" />
   <!-- //google 웹마스터 -->
@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/algorithm/2021/07/29/coin1.html">
+  <link rel="canonical" href="http://localhost:4000/algorithm/2021/07/30/bridge.html">
   <link rel="alternate" type="application/rss+xml" title="Tech" href="/feed.xml">
   <link rel="stylesheet" href="/assets/css/syntax.css">
   <link rel="stylesheet" href="/assets/css/custom.css">
@@ -122,9 +122,9 @@
       <div class="row">
         <div class="col-lg-10 col-md-10 mx-auto">
           <div class="post-heading" style="padding:80px 0; color:#000 !important;">
-            <h1 style="font-size:40px !important;">백준 2293번 동전 1 (python 파이썬)</h1>
+            <h1 style="font-size:40px !important;">백준 1010번 다리 놓기 (python 파이썬)</h1>
             <h2 class="subheading" style="font-size:22px !important; color:#868e96 !important;">
-				July 29, 2021
+				July 30, 2021
 			</h2>
           </div>
         </div>
@@ -136,58 +136,56 @@
     <div class="row">
       <div class="col-lg-10 col-md-10 mx-auto">
 
-        <p>백준 2293번 동전 1 문제를 Python으로 해결한 문제이다.</p>
+        <p>백준 1010번 다리 놓기 문제를 Python으로 해결한 문제이다.</p>
 
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/2293" target="_blank">백준 2293번 동전 1 문제 링크</a></li>
+  <li><a href="https://www.acmicpc.net/problem/1010" target="_blank">백준 1010번 다리 놓기 문제 링크</a></li>
 </ul>
 
 <h3 id="문제">문제</h3>
-<p>n가지 종류의 동전이 있다. 각각의 동전이 나타내는 가치는 다르다. 이 동전을 적당히 사용해서, 그 가치의 합이 k원이 되도록 하고 싶다. 그 경우의 수를 구하시오. 각각의 동전은 몇 개라도 사용할 수 있다.</p>
+<p>재원이는 한 도시의 시장이 되었다. 이 도시에는 도시를 동쪽과 서쪽으로 나누는 큰 일직선 모양의 강이 흐르고 있다. 하지만 재원이는 다리가 없어서 시민들이 강을 건너는데 큰 불편을 겪고 있음을 알고 다리를 짓기로 결심하였다. 강 주변에서 다리를 짓기에 적합한 곳을 사이트라고 한다. 재원이는 강 주변을 면밀히 조사해 본 결과 강의 서쪽에는 N개의 사이트가 있고 동쪽에는 M개의 사이트가 있다는 것을 알았다. (N ≤ M)</p>
 
-<p>사용한 동전의 구성이 같은데, 순서만 다른 것은 같은 경우이다.</p>
+<p>재원이는 서쪽의 사이트와 동쪽의 사이트를 다리로 연결하려고 한다. (이때 한 사이트에는 최대 한 개의 다리만 연결될 수 있다.) 재원이는 다리를 최대한 많이 지으려고 하기 때문에 서쪽의 사이트 개수만큼 (N개) 다리를 지으려고 한다. 다리끼리는 서로 겹쳐질 수 없다고 할 때 다리를 지을 수 있는 경우의 수를 구하는 프로그램을 작성하라.</p>
+
+<p><img src="/img/algorithm/bridge.PNG" /></p>
 
 <h3 id="입력">입력</h3>
-<p>첫째 줄에 n, k가 주어진다. (1 ≤ n ≤ 100, 1 ≤ k ≤ 10,000) 다음 n개의 줄에는 각각의 동전의 가치가 주어진다. 동전의 가치는 100,000보다 작거나 같은 자연수이다.</p>
+<p>입력의 첫 줄에는 테스트 케이스의 개수 T가 주어진다. 그 다음 줄부터 각각의 테스트케이스에 대해 강의 서쪽과 동쪽에 있는 사이트의 개수 정수 N, M (0 &lt; N ≤ M &lt; 30)이 주어진다.</p>
 
 <h3 id="출력">출력</h3>
-<p><strong><u>첫째 줄에 경우의 수를 출력한다. 경우의 수는 2^31보다 작다.</u></strong></p>
+<p><strong><u>각 테스트 케이스에 대해 주어진 조건하에 다리를 지을 수 있는 경우의 수를 출력한다.</u></strong></p>
 
 <h3 id="문제풀이">문제풀이</h3>
-<p>동전을 가지고 만들 수 있는 숫자는 dp[j]에 dp[j-i]의 개수를 더해주면 된다.</p>
+<p>M이 N보다 크기 때문에 최대 연결할 수 있는 다리의 개수는 N개 이고<br />
+M개의 지역에 N개의 다리를 놓을 수 있는 경우의 수를 구하는 것이기 때문에<br />
+mCn 으로 표현할 수 있고 이는 M! 을 (M-N)!N! 으로 나눈 값이 된다.<br />
+즉 식으로 표현하자면 factorial[M] // (factorial[N] * factorial[M-N])과 같다.</p>
 
 <h3 id="코드">코드</h3>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="n">read</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span><span class="p">().</span><span class="n">rstrip</span><span class="p">()</span>
 
-<span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">read</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
-<span class="n">coins</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">factorial</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="n">dp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
-<span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">):</span>
+    <span class="n">factorial</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">factorial</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">coins</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">read</span><span class="p">()))</span>
+<span class="n">T</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">read</span><span class="p">())</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">coins</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">j</span> <span class="o">-</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="n">i</span><span class="p">]</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">read</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+    <span class="n">bridge</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">[</span><span class="n">M</span><span class="p">]</span> <span class="o">//</span> <span class="p">(</span><span class="n">factorial</span><span class="p">[</span><span class="n">N</span><span class="p">]</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">[</span><span class="n">M</span> <span class="o">-</span> <span class="n">N</span><span class="p">])</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">bridge</span><span class="p">)</span>
 </code></pre></div></div>
 
 
         <hr>
         <div class="clearfix">
           
-          <a class="btn btn-primary float-left" href="/algorithm/2021/07/28/retire.html" data-toggle="tooltip" data-placement="top" title="백준 14501번 퇴사 (python 파이썬)">&larr; 이전<span class="d-none d-md-inline">
+          <a class="btn btn-primary float-left" href="/algorithm/2021/07/29/coin1.html" data-toggle="tooltip" data-placement="top" title="백준 2293번 동전 1 (python 파이썬)">&larr; 이전<span class="d-none d-md-inline">
               게시물</span></a>
           
-          
-          <a class="btn btn-primary float-right" href="/algorithm/2021/07/30/bridge.html" data-toggle="tooltip" data-placement="top" title="백준 1010번 다리 놓기 (python 파이썬)">다음<span class="d-none d-md-inline">
-              게시물</span> &rarr;</a>
           
         </div>
 		
