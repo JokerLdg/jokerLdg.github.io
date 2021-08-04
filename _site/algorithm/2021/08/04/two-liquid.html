@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    백준 2470번 두 용액 (python 파이썬) - Tech
+    
+  </title>
+
+  <meta name="description" content="백준 2470번 두 용액 문제를 Python으로 해결한 문제이다.">
+  <!-- google 웹마스터 -->
+  <meta name="google-site-verification" content="1M5pUHiID88fUVGyUOZvd5xyyGEcU37L6sdv7fkh8xg" />
+  <!-- //google 웹마스터 -->
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/algorithm/2021/08/04/two-liquid.html">
+  <link rel="alternate" type="application/rss+xml" title="Tech" href="/feed.xml">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <link rel="stylesheet" href="/assets/css/custom.css">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Tech</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+		<li class="nav-item"><a class="nav-link">Category</a>
+			<ul class="navbar-nav ml-auto">
+			
+			
+			  
+								
+					<li class="nav-item">
+						<a class="nav-link category-link " href="/algorithm">Algorithm</a>
+					</li>
+				
+			  
+			
+			  
+								
+					<li class="nav-item">
+						<a class="nav-link category-link " href="/architecture">Architecture</a>
+					</li>
+				
+			  
+			
+			  
+								
+					<li class="nav-item">
+						<a class="nav-link category-link " href="/cpp">C/C++</a>
+					</li>
+				
+			  
+			
+			  
+								
+					<li class="nav-item">
+						<a class="nav-link category-link " href="/english">English</a>
+					</li>
+				
+			  
+			
+			  
+								
+					<li class="nav-item">
+						<a class="nav-link category-link " href="/java">Java</a>
+					</li>
+				
+			  
+			
+			  
+				
+			  
+			
+			  
+			
+			  
+			
+			  
+			
+			  
+			
+			</ul>
+		</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+  <header class="masthead" style="height:200px; margin-bottom:30px; background-color:#fff !important">
+    <div class="overlay" style="background-color:#fff !important"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 col-md-10 mx-auto">
+          <div class="post-heading" style="padding:80px 0; color:#000 !important;">
+            <h1 style="font-size:40px !important;">백준 2470번 두 용액 (python 파이썬)</h1>
+            <h2 class="subheading" style="font-size:22px !important; color:#868e96 !important;">
+				August 04, 2021
+			</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="div_container_post" class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 mx-auto">
+
+        <p>백준 2470번 두 용액 문제를 Python으로 해결한 문제이다.</p>
+
+<ul>
+  <li><a href="https://www.acmicpc.net/problem/2470" target="_blank">백준 2470번 두 용액 문제 링크</a></li>
+</ul>
+
+<h3 id="문제">문제</h3>
+<p>KOI 부설 과학연구소에서는 많은 종류의 산성 용액과 알칼리성 용액을 보유하고 있다. 각 용액에는 그 용액의 특성을 나타내는 하나의 정수가 주어져있다.  산성 용액의 특성값은 1부터 1,000,000,000까지의 양의 정수로 나타내고, 알칼리성 용액의 특성값은 -1부터 -1,000,000,000까지의 음의 정수로 나타낸다.</p>
+
+<p>같은 양의 두 용액을 혼합한 용액의 특성값은 혼합에 사용된 각 용액의 특성값의 합으로 정의한다. 이 연구소에서는 같은 양의 두 용액을 혼합하여 특성값이 0에 가장 가까운 용액을 만들려고 한다.</p>
+
+<p>예를 들어, 주어진 용액들의 특성값이 [-2, 4, -99, -1, 98]인 경우에는 특성값이 -99인 용액과 특성값이 98인 용액을 혼합하면 특성값이 -1인 용액을 만들 수 있고, 이 용액이 특성값이 0에 가장 가까운 용액이다. 참고로, 두 종류의 알칼리성 용액만으로나 혹은 두 종류의 산성 용액만으로 특성값이 0에 가장 가까운 혼합 용액을 만드는 경우도 존재할 수 있다.</p>
+
+<p>산성 용액과 알칼리성 용액의 특성값이 주어졌을 때, 이 중 두 개의 서로 다른 용액을 혼합하여 특성값이 0에 가장 가까운 용액을 만들어내는 두 용액을 찾는 프로그램을 작성하시오.</p>
+
+<h3 id="입력">입력</h3>
+<p>첫째 줄에는 전체 용액의 수 N이 입력된다. N은 2 이상 100,000 이하이다. 둘째 줄에는 용액의 특성값을 나타내는 N개의 정수가 빈칸을 사이에 두고 주어진다. 이 수들은 모두 -1,000,000,000 이상 1,000,000,000 이하이다. N개의 용액들의 특성값은 모두 다르고, 산성 용액만으로나 알칼리성 용액만으로 입력이 주어지는 경우도 있을 수 있다.</p>
+
+<h3 id="출력">출력</h3>
+<p><strong><u>첫째 줄에 특성값이 0에 가장 가까운 용액을 만들어내는 두 용액의 특성값을 출력한다. 출력해야 하는 두 용액은 특성값의 오름차순으로 출력한다. 특성값이 0에 가장 가까운 용액을 만들어내는 경우가 두 개 이상일 경우에는 그 중 아무것이나 하나를 출력한다.</u></strong></p>
+
+<h3 id="문제풀이">문제풀이</h3>
+<ol>
+  <li>입력받은 용액 값을 오름차순으로 정렬한다.</li>
+  <li>start 값에 0, end 값에 N-1, a_start 값에 start값, a_end값에 end값 대입한다.
+    <ul>
+      <li>반복문을 통해 음수에서 양수로 넘어가는 부분까지 계산</li>
+      <li>처음 값과 끝 값을 먼저 계산하여 answer에 대입하고 시작한다.</li>
+    </ul>
+  </li>
+  <li>현재의 start, end 인덱스에 존재하는 값의 합이 answer 보다 작다면 answer 값에 대입해주고 a_start와 a_end 값도 바꿔준다.
+    <ul>
+      <li>answer 값이 0일 경우엔 더이상 while 문을 돌리지 않고 break</li>
+    </ul>
+  </li>
+  <li>temp 값이 양수 이면 end -=1, temp 값이 음수 이면 start += 1</li>
+</ol>
+
+<h3 id="코드">코드</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">read</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span><span class="p">().</span><span class="n">rstrip</span><span class="p">()</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">read</span><span class="p">())</span>
+<span class="n">liquid</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">read</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span>
+<span class="n">liquid</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span>
+
+<span class="n">answer</span> <span class="o">=</span> <span class="n">liquid</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">+</span> <span class="n">liquid</span><span class="p">[</span><span class="n">end</span><span class="p">]</span>
+
+<span class="n">a_start</span> <span class="o">=</span> <span class="n">start</span>
+<span class="n">a_end</span> <span class="o">=</span> <span class="n">end</span>
+
+<span class="k">while</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">:</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">liquid</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">+</span> <span class="n">liquid</span><span class="p">[</span><span class="n">end</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">answer</span><span class="p">):</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="n">temp</span>
+        <span class="n">a_start</span> <span class="o">=</span> <span class="n">start</span>
+        <span class="n">a_end</span> <span class="o">=</span> <span class="n">end</span>
+
+        <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="k">if</span> <span class="n">temp</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">end</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">liquid</span><span class="p">[</span><span class="n">a_start</span><span class="p">],</span> <span class="n">liquid</span><span class="p">[</span><span class="n">a_end</span><span class="p">])</span>
+</code></pre></div></div>
+
+
+        <hr>
+        <div class="clearfix">
+          
+          <a class="btn btn-primary float-left" href="/algorithm/2021/08/03/array-combine.html" data-toggle="tooltip" data-placement="top" title="백준 11728번 배열 합치기 (python 파이썬)">&larr; 이전<span class="d-none d-md-inline">
+              게시물</span></a>
+          
+          
+        </div>
+		
+		<br><br>
+		<div id="disqus_thread"></div>
+		  <script>
+		  /**
+		  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+		  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+		  /*
+		  var disqus_config = function () {
+		  this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+		  this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		  };
+		  */
+		  (function() { // DON'T EDIT BELOW THIS LINE
+		  var d = document, s = d.createElement('script');
+		  s.src = 'https://jokerldg.disqus.com/embed.js';
+		  s.setAttribute('data-timestamp', +new Date());
+		  (d.head || d.body).appendChild(s);
+		  })();
+		  </script>
+		  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+		</div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/jokerLdg">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; jokerLdg 2021</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+</body>
+
+</html>
