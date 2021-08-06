@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
-    백준 3273번 두 수의 합 (python 파이썬) - Tech
+    백준 2559번 수열 (python 파이썬) - Tech
     
   </title>
 
-  <meta name="description" content="백준 3273번 두 수의 합 문제를 Python으로 해결한 문제이다.">
+  <meta name="description" content="백준 2559번 수열 문제를 Python으로 해결한 문제이다.">
   <!-- google 웹마스터 -->
   <meta name="google-site-verification" content="1M5pUHiID88fUVGyUOZvd5xyyGEcU37L6sdv7fkh8xg" />
   <!-- //google 웹마스터 -->
@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/algorithm/2021/08/05/two-number-sum.html">
+  <link rel="canonical" href="http://localhost:4000/algorithm/2021/08/06/sequence.html">
   <link rel="alternate" type="application/rss+xml" title="Tech" href="/feed.xml">
   <link rel="stylesheet" href="/assets/css/syntax.css">
   <link rel="stylesheet" href="/assets/css/custom.css">
@@ -122,9 +122,9 @@
       <div class="row">
         <div class="col-lg-10 col-md-10 mx-auto">
           <div class="post-heading" style="padding:80px 0; color:#000 !important;">
-            <h1 style="font-size:40px !important;">백준 3273번 두 수의 합 (python 파이썬)</h1>
+            <h1 style="font-size:40px !important;">백준 2559번 수열 (python 파이썬)</h1>
             <h2 class="subheading" style="font-size:22px !important; color:#868e96 !important;">
-				August 05, 2021
+				August 06, 2021
 			</h2>
           </div>
         </div>
@@ -136,62 +136,63 @@
     <div class="row">
       <div class="col-lg-10 col-md-10 mx-auto">
 
-        <p>백준 3273번 두 수의 합 문제를 Python으로 해결한 문제이다.</p>
+        <p>백준 2559번 수열 문제를 Python으로 해결한 문제이다.</p>
 
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/3273" target="_blank">백준 3273번 두 수의 합 문제 링크</a></li>
+  <li><a href="https://www.acmicpc.net/problem/2559" target="_blank">백준 2559번 수열 문제 링크</a></li>
 </ul>
 
 <h3 id="문제">문제</h3>
-<p>n개의 서로 다른 양의 정수 a1, a2, …, an으로 이루어진 수열이 있다. ai의 값은 1보다 크거나 같고, 1000000보다 작거나 같은 자연수이다. 자연수 x가 주어졌을 때, ai + aj = x (1 ≤ i &lt; j ≤ n)을 만족하는 (ai, aj)쌍의 수를 구하는 프로그램을 작성하시오.</p>
+<p>매일 아침 9시에 학교에서 측정한 온도가 어떤 정수의 수열로 주어졌을 때, 연속적인 며칠 동안의 온도의 합이 가장 큰 값을 알아보고자 한다.</p>
+
+<p>예를 들어, 아래와 같이 10일 간의 온도가 주어졌을 때,</p>
+
+<p>3 -2 -4 -9 0 3 7 13 8 -3</p>
+
+<p>모든 연속적인 이틀간의 온도의 합은 아래와 같다.</p>
+<p align="center"><img src="/img/algorithm/sequence1.PNG" /></p>
+
+<p>이때, 온도의 합이 가장 큰 값은 21이다.</p>
+
+<p>또 다른 예로 위와 같은 온도가 주어졌을 때, 모든 연속적인 5일 간의 온도의 합은 아래와 같으며,</p>
+<p align="center"><img src="/img/algorithm/sequence2.PNG" /></p>
+
+<p>이때, 온도의 합이 가장 큰 값은 31이다.</p>
+
+<p>매일 측정한 온도가 정수의 수열로 주어졌을 때, 연속적인 며칠 동안의 온도의 합이 가장 큰 값을 계산하는 프로그램을 작성하시오.</p>
 
 <h3 id="입력">입력</h3>
-<p>첫째 줄에 수열의 크기 n이 주어진다. 다음 줄에는 수열에 포함되는 수가 주어진다. 셋째 줄에는 x가 주어진다. (1 ≤ n ≤ 100000, 1 ≤ x ≤ 2000000)</p>
+<p>첫째 줄에는 두 개의 정수 N과 K가 한 개의 공백을 사이에 두고 순서대로 주어진다. 첫 번째 정수 N은 온도를 측정한 전체 날짜의 수이다. N은 2 이상 100,000 이하이다. 두 번째 정수 K는 합을 구하기 위한 연속적인 날짜의 수이다. K는 1과 N 사이의 정수이다. 둘째 줄에는 매일 측정한 온도를 나타내는 N개의 정수가 빈칸을 사이에 두고 주어진다. 이 수들은 모두 -100 이상 100 이하이다.</p>
 
 <h3 id="출력">출력</h3>
-<p><strong><u>문제의 조건을 만족하는 쌍의 개수를 출력한다.</u></strong></p>
+<p><strong><u>첫째 줄에는 입력되는 온도의 수열에서 연속적인 K일의 온도의 합이 최대가 되는 값을 출력한다.</u></strong></p>
 
 <h3 id="문제풀이">문제풀이</h3>
-<ol>
-  <li>배열(arr)을 입력받고 정렬을 해준다.
-    <ul>
-      <li>정렬을 하지 않으면 투 포인터를 정상적으로 사용할 수 없다.</li>
-    </ul>
-  </li>
-  <li>arr[start]와 arr[end]를 더해서 temp 변수에 담는다.
-    <ul>
-      <li>temp가 x일 경우 answer를 1 증가 시킨다.</li>
-      <li>temp가 x보다 작을 경우는 두 값의 합이 부족하므로 start를 1 증가시킨다.(오름차순 정렬이기 때문에)</li>
-      <li>temp가 x보다 클 경우, end를 1 감소시킨다. (오름차순 정렬이기 때문에 한값 내려와야한다.)</li>
-    </ul>
-  </li>
-  <li>결과를 출력한다.</li>
-</ol>
+<ul>
+  <li>start 포인터의 범위는 [0 ~ N-K] 까지이다.</li>
+  <li>end 포인터의 범위는 [0 ~ start+K] 까지이다.</li>
+  <li>curr에 end 포인터가 가리키는 값을 더해주고, end 포인터 를 한 칸 뒤로 이동시켜준다.</li>
+  <li>answer 변수에 가장 큰 curr 값을 저장한다.</li>
+  <li>start 포인터를 한 칸 뒤로 이동시켜주기 위해 curr에서 start 포인터가 가리키는 값을 빼준다.</li>
+</ul>
 
 <h3 id="코드">코드</h3>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="n">read</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span><span class="p">().</span><span class="n">rstrip</span><span class="p">()</span>
 
-<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">read</span><span class="p">())</span>
+<span class="n">N</span><span class="p">,</span> <span class="n">K</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">read</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
 <span class="n">arr</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">read</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span>
-<span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">read</span><span class="p">())</span>
 
-<span class="n">arr</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">end</span><span class="p">,</span> <span class="n">answer</span><span class="p">,</span> <span class="n">curr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="s">'-inf'</span><span class="p">),</span> <span class="mi">0</span>
 
-<span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span>
-<span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="n">K</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">end</span> <span class="o">&lt;</span> <span class="n">start</span> <span class="o">+</span> <span class="n">K</span> <span class="ow">and</span> <span class="n">end</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">:</span>
+        <span class="n">curr</span> <span class="o">+=</span> <span class="n">arr</span><span class="p">[</span><span class="n">end</span><span class="p">]</span>
+        <span class="n">end</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="n">curr</span><span class="p">)</span>
+    <span class="n">curr</span> <span class="o">-=</span> <span class="n">arr</span><span class="p">[</span><span class="n">start</span><span class="p">]</span>
 
-<span class="k">while</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">:</span>
-    <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[</span><span class="n">end</span><span class="p">]</span>
-
-    <span class="k">if</span> <span class="n">temp</span> <span class="o">==</span> <span class="n">x</span><span class="p">:</span>
-        <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span>
-
-    <span class="k">if</span> <span class="n">temp</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span>
-        <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">end</span> <span class="o">-=</span> <span class="mi">1</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
 </code></pre></div></div>
@@ -200,12 +201,9 @@
         <hr>
         <div class="clearfix">
           
-          <a class="btn btn-primary float-left" href="/algorithm/2021/08/04/two-liquid.html" data-toggle="tooltip" data-placement="top" title="백준 2470번 두 용액 (python 파이썬)">&larr; 이전<span class="d-none d-md-inline">
+          <a class="btn btn-primary float-left" href="/algorithm/2021/08/05/two-number-sum.html" data-toggle="tooltip" data-placement="top" title="백준 3273번 두 수의 합 (python 파이썬)">&larr; 이전<span class="d-none d-md-inline">
               게시물</span></a>
           
-          
-          <a class="btn btn-primary float-right" href="/algorithm/2021/08/06/sequence.html" data-toggle="tooltip" data-placement="top" title="백준 2559번 수열 (python 파이썬)">다음<span class="d-none d-md-inline">
-              게시물</span> &rarr;</a>
           
         </div>
 		
