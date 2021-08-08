@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
-    백준 1940번 주몽 (python 파이썬) - Tech
+    백준 2230번 수 고르기 (python 파이썬) - Tech
     
   </title>
 
-  <meta name="description" content="백준 1940번 주몽 문제를 Python으로 해결한 문제이다.">
+  <meta name="description" content="백준 2230번 수 고르기 문제를 Python으로 해결한 문제이다.">
   <!-- google 웹마스터 -->
   <meta name="google-site-verification" content="1M5pUHiID88fUVGyUOZvd5xyyGEcU37L6sdv7fkh8xg" />
   <!-- //google 웹마스터 -->
@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/algorithm/2021/08/07/jumong.html">
+  <link rel="canonical" href="http://localhost:4000/algorithm/2021/08/08/pick-number.html">
   <link rel="alternate" type="application/rss+xml" title="Tech" href="/feed.xml">
   <link rel="stylesheet" href="/assets/css/syntax.css">
   <link rel="stylesheet" href="/assets/css/custom.css">
@@ -122,9 +122,9 @@
       <div class="row">
         <div class="col-lg-10 col-md-10 mx-auto">
           <div class="post-heading" style="padding:80px 0; color:#000 !important;">
-            <h1 style="font-size:40px !important;">백준 1940번 주몽 (python 파이썬)</h1>
+            <h1 style="font-size:40px !important;">백준 2230번 수 고르기 (python 파이썬)</h1>
             <h2 class="subheading" style="font-size:22px !important; color:#868e96 !important;">
-				August 07, 2021
+				August 08, 2021
 			</h2>
           </div>
         </div>
@@ -136,43 +136,34 @@
     <div class="row">
       <div class="col-lg-10 col-md-10 mx-auto">
 
-        <p>백준 1940번 주몽 문제를 Python으로 해결한 문제이다.</p>
+        <p>백준 2230번 수 고르기 문제를 Python으로 해결한 문제이다.</p>
 
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/1940" target="_blank">백준 1940번 주몽 문제 링크</a></li>
+  <li><a href="https://www.acmicpc.net/problem/2230" target="_blank">백준 2230번 수 고르기 문제 링크</a></li>
 </ul>
 
 <h3 id="문제">문제</h3>
-<p>주몽은 철기군을 양성하기 위한 프로젝트에 나섰다. 그래서 야철대장을 통해 철기군이 입을 갑옷을 만들게 하였다. 야철대장은 주몽의 명에 따르기 위하여 연구에 착수하던 중 아래와 같은 사실을 발견하게 되었다.</p>
+<p>N개의 정수로 이루어진 수열 A[1], A[2], …, A[N]이 있다. 이 수열에서 두 수를 골랐을 때(같은 수일 수도 있다), 그 차이가 M 이상이면서 제일 작은 경우를 구하는 프로그램을 작성하시오.</p>
 
-<p>갑옷을 만드는 재료들은 각각 고유한 번호를 가지고 있다. 갑옷은 두 개의 재료로 만드는데 두 재료의 고유한 번호를 합쳐서 M(1 ≤ M ≤ 10,000,000)이 되면 갑옷이 만들어 지게 된다. 야철대장은 자신이 만들고 있는 재료를 가지고 갑옷을 몇 개나 만들 수 있는지 궁금해졌다. 이러한 궁금증을 풀어 주기 위하여 N(1 ≤ N ≤ 15,000) 개의 재료와 M이 주어졌을 때 몇 개의 갑옷을 만들 수 있는지를 구하는 프로그램을 작성하시오.</p>
+<p>예를 들어 수열이 {1, 2, 3, 4, 5}라고 하자. 만약 M = 3일 경우, 1 4, 1 5, 2 5를 골랐을 때 그 차이가 M 이상이 된다. 이 중에서 차이가 가장 작은 경우는 1 4나 2 5를 골랐을 때의 3이 된다.</p>
 
 <h3 id="입력">입력</h3>
-<p>첫째 줄에는 재료의 개수 N(1 ≤ N ≤ 15,000)이 주어진다. 그리고 두 번째 줄에는 갑옷을 만드는데 필요한 수 M(1 ≤ M ≤ 10,000,000) 주어진다. 그리고 마지막으로 셋째 줄에는 N개의 재료들이 가진 고유한 번호들이 공백을 사이에 두고 주어진다. 고유한 번호는 100,000보다 작거나 같은 자연수이다.</p>
+<p>첫째 줄에 두 정수 N, M이 주어진다. 다음 N개의 줄에는 차례로 A[1], A[2], …, A[N]이 주어진다.</p>
 
 <h3 id="출력">출력</h3>
-<p><strong><u>첫째 줄에 갑옷을 만들 수 있는 개수를 출력한다.</u></strong></p>
+<p><strong><u>첫째 줄에 M 이상이면서 가장 작은 차이를 출력한다. 항상 차이가 M이상인 두 수를 고를 수 있다.</u></strong></p>
 
 <h3 id="문제풀이">문제풀이</h3>
 <ol>
-  <li>고유한 번호들을 정렬한다.</li>
-  <li>양쪽 끝에서 시작하여, 둘의 합이 M과 같으면
+  <li>배열을 입력 받고 정렬한다.</li>
+  <li>start, end 포인터를 이용하여 큰값에서 작은값을 빼서 temp에 저장한다.
     <ul>
-      <li>answer를 1 증가 시킨다.</li>
-      <li>start 포인터를 1 증가 시킨다</li>
-      <li>end 포인터를 1 감소 시킨다.</li>
+      <li>temp 값이 M과 같다면 answer에 M을 저장하고, 반복을 종료한다.</li>
+      <li>temp가 M보다 작다면 end 포인터를 1 증가시킨다.</li>
+      <li>temp가 M보다 크면, start 포인터를 1 증가시키고, answer와 temp중 더 작은값을 answer에 저장한다.</li>
     </ul>
   </li>
-  <li>둘의 합이 M 보다 작다면
-    <ul>
-      <li>start 포인터만 1 증가 시킨다.</li>
-    </ul>
-  </li>
-  <li>둘의 합이 M 보다 크다면
-    <ul>
-      <li>end 포인터를 1 감소 시킨다.</li>
-    </ul>
-  </li>
+  <li>answer를 출력한다.</li>
 </ol>
 
 <h3 id="코드">코드</h3>
@@ -180,23 +171,27 @@
 
 <span class="n">read</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span><span class="p">().</span><span class="n">rstrip</span><span class="p">()</span>
 
-<span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">read</span><span class="p">())</span>
-<span class="n">M</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">read</span><span class="p">())</span>
-<span class="n">nums</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">read</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span>
-<span class="n">nums</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">read</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">arr</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">read</span><span class="p">()))</span>
+    
+<span class="n">arr</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
 
-<span class="k">while</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="o">==</span> <span class="n">M</span><span class="p">:</span>
-        <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">end</span> <span class="o">-=</span> <span class="mi">1</span>
-    <span class="k">elif</span> <span class="n">nums</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">M</span><span class="p">:</span>
-        <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">end</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">answer</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">maxsize</span>
+
+<span class="k">while</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">N</span> <span class="ow">and</span> <span class="n">end</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">:</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="o">-</span> <span class="n">arr</span><span class="p">[</span><span class="n">start</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">temp</span> <span class="o">==</span> <span class="n">M</span><span class="p">:</span>
+        <span class="n">answer</span> <span class="o">=</span> <span class="n">M</span>
+        <span class="k">break</span>
+    <span class="k">if</span> <span class="n">temp</span> <span class="o">&lt;</span> <span class="n">M</span><span class="p">:</span>
+        <span class="n">end</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">continue</span>
+    <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="n">temp</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
 </code></pre></div></div>
@@ -205,12 +200,9 @@
         <hr>
         <div class="clearfix">
           
-          <a class="btn btn-primary float-left" href="/algorithm/2021/08/06/sequence.html" data-toggle="tooltip" data-placement="top" title="백준 2559번 수열 (python 파이썬)">&larr; 이전<span class="d-none d-md-inline">
+          <a class="btn btn-primary float-left" href="/algorithm/2021/08/07/jumong.html" data-toggle="tooltip" data-placement="top" title="백준 1940번 주몽 (python 파이썬)">&larr; 이전<span class="d-none d-md-inline">
               게시물</span></a>
           
-          
-          <a class="btn btn-primary float-right" href="/algorithm/2021/08/08/pick-number.html" data-toggle="tooltip" data-placement="top" title="백준 2230번 수 고르기 (python 파이썬)">다음<span class="d-none d-md-inline">
-              게시물</span> &rarr;</a>
           
         </div>
 		
