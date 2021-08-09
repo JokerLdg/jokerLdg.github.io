@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
-    백준 2230번 수 고르기 (python 파이썬) - Tech
+    백준 2018번 수들의 합 5 (python 파이썬) - Tech
     
   </title>
 
-  <meta name="description" content="백준 2230번 수 고르기 문제를 Python으로 해결한 문제이다.">
+  <meta name="description" content="백준 2018번 수들의 합 5 문제를 Python으로 해결한 문제이다.">
   <!-- google 웹마스터 -->
   <meta name="google-site-verification" content="1M5pUHiID88fUVGyUOZvd5xyyGEcU37L6sdv7fkh8xg" />
   <!-- //google 웹마스터 -->
@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/algorithm/2021/08/08/pick-number.html">
+  <link rel="canonical" href="http://localhost:4000/algorithm/2021/08/09/number-sum5.html">
   <link rel="alternate" type="application/rss+xml" title="Tech" href="/feed.xml">
   <link rel="stylesheet" href="/assets/css/syntax.css">
   <link rel="stylesheet" href="/assets/css/custom.css">
@@ -122,9 +122,9 @@
       <div class="row">
         <div class="col-lg-10 col-md-10 mx-auto">
           <div class="post-heading" style="padding:80px 0; color:#000 !important;">
-            <h1 style="font-size:40px !important;">백준 2230번 수 고르기 (python 파이썬)</h1>
+            <h1 style="font-size:40px !important;">백준 2018번 수들의 합 5 (python 파이썬)</h1>
             <h2 class="subheading" style="font-size:22px !important; color:#868e96 !important;">
-				August 08, 2021
+				August 09, 2021
 			</h2>
           </div>
         </div>
@@ -136,76 +136,38 @@
     <div class="row">
       <div class="col-lg-10 col-md-10 mx-auto">
 
-        <p>백준 2230번 수 고르기 문제를 Python으로 해결한 문제이다.</p>
+        <p>백준 2018번 수들의 합 5 문제를 Python으로 해결한 문제이다.</p>
 
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/2230" target="_blank">백준 2230번 수 고르기 문제 링크</a></li>
+  <li><a href="https://www.acmicpc.net/problem/2018" target="_blank">백준 2018번 수들의 합 5 문제 링크</a></li>
 </ul>
 
 <h3 id="문제">문제</h3>
-<p>N개의 정수로 이루어진 수열 A[1], A[2], …, A[N]이 있다. 이 수열에서 두 수를 골랐을 때(같은 수일 수도 있다), 그 차이가 M 이상이면서 제일 작은 경우를 구하는 프로그램을 작성하시오.</p>
+<p>어떠한 자연수 N은, 몇 개의 연속된 자연수의 합으로 나타낼 수 있다. 당신은 어떤 자연수 N(1 ≤ N ≤ 10,000,000)에 대해서, 이 N을 몇 개의 연속된 자연수의 합으로 나타내는 가지수를 알고 싶어한다. 이때, 사용하는 자연수는 N이하여야 한다.</p>
 
-<p>예를 들어 수열이 {1, 2, 3, 4, 5}라고 하자. 만약 M = 3일 경우, 1 4, 1 5, 2 5를 골랐을 때 그 차이가 M 이상이 된다. 이 중에서 차이가 가장 작은 경우는 1 4나 2 5를 골랐을 때의 3이 된다.</p>
+<p>예를 들어, 15를 나타내는 방법은 15, 7+8, 4+5+6, 1+2+3+4+5의 4가지가 있다. 반면에 10을 나타내는 방법은 10, 1+2+3+4의 2가지가 있다.</p>
+
+<p>N을 입력받아 가지수를 출력하는 프로그램을 작성하시오.</p>
 
 <h3 id="입력">입력</h3>
-<p>첫째 줄에 두 정수 N, M이 주어진다. 다음 N개의 줄에는 차례로 A[1], A[2], …, A[N]이 주어진다.</p>
+<p>첫 줄에 정수 N이 주어진다.</p>
 
 <h3 id="출력">출력</h3>
-<p><strong><u>첫째 줄에 M 이상이면서 가장 작은 차이를 출력한다. 항상 차이가 M이상인 두 수를 고를 수 있다.</u></strong></p>
+<p><strong><u>입력된 자연수 N을 몇 개의 연속된 자연수의 합으로 나타내는 가지수를 출력하시오</u></strong></p>
 
 <h3 id="문제풀이">문제풀이</h3>
-<ol>
-  <li>배열을 입력 받고 정렬한다.</li>
-  <li>start, end 포인터를 이용하여 큰값에서 작은값을 빼서 temp에 저장한다.
-    <ul>
-      <li>temp 값이 M과 같다면 answer에 M을 저장하고, 반복을 종료한다.</li>
-      <li>temp가 M보다 작다면 end 포인터를 1 증가시킨다.</li>
-      <li>temp가 M보다 크면, start 포인터를 1 증가시키고, answer와 temp중 더 작은값을 answer에 저장한다.</li>
-    </ul>
-  </li>
-  <li>answer를 출력한다.</li>
-</ol>
 
 <h3 id="코드">코드</h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="n">read</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span><span class="p">().</span><span class="n">rstrip</span><span class="p">()</span>
-
-<span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">read</span><span class="p">().</span><span class="n">split</span><span class="p">())</span>
-<span class="n">arr</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-    <span class="n">arr</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">read</span><span class="p">()))</span>
-    
-<span class="n">arr</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
-
-<span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
-<span class="n">answer</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">maxsize</span>
-
-<span class="k">while</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">N</span> <span class="ow">and</span> <span class="n">end</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">:</span>
-    <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="o">-</span> <span class="n">arr</span><span class="p">[</span><span class="n">start</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">temp</span> <span class="o">==</span> <span class="n">M</span><span class="p">:</span>
-        <span class="n">answer</span> <span class="o">=</span> <span class="n">M</span>
-        <span class="k">break</span>
-    <span class="k">if</span> <span class="n">temp</span> <span class="o">&lt;</span> <span class="n">M</span><span class="p">:</span>
-        <span class="n">end</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">continue</span>
-    <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="n">answer</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="n">temp</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 </code></pre></div></div>
 
 
         <hr>
         <div class="clearfix">
           
-          <a class="btn btn-primary float-left" href="/algorithm/2021/08/07/jumong.html" data-toggle="tooltip" data-placement="top" title="백준 1940번 주몽 (python 파이썬)">&larr; 이전<span class="d-none d-md-inline">
+          <a class="btn btn-primary float-left" href="/algorithm/2021/08/08/pick-number.html" data-toggle="tooltip" data-placement="top" title="백준 2230번 수 고르기 (python 파이썬)">&larr; 이전<span class="d-none d-md-inline">
               게시물</span></a>
           
-          
-          <a class="btn btn-primary float-right" href="/algorithm/2021/08/09/number-sum5.html" data-toggle="tooltip" data-placement="top" title="백준 2018번 수들의 합 5 (python 파이썬)">다음<span class="d-none d-md-inline">
-              게시물</span> &rarr;</a>
           
         </div>
 		
