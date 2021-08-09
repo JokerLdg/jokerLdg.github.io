@@ -156,9 +156,52 @@
 <p><strong><u>입력된 자연수 N을 몇 개의 연속된 자연수의 합으로 나타내는 가지수를 출력하시오</u></strong></p>
 
 <h3 id="문제풀이">문제풀이</h3>
+<ol>
+  <li>start, end에 0, 1을 대입하고 sum_numbers에 1을 대입한다.</li>
+  <li>sum_numbers가 N보다 작다면
+    <ul>
+      <li>end를 1 증가, sum_nubers에 end를 더한다.</li>
+    </ul>
+  </li>
+  <li>sum_numbers가 N과 같다면
+    <ul>
+      <li>answer 1 증가, end 1증가, sum_numbers에 start를 뺀다음 다시 end를 더한다. 그리고 start에 1을 더한다.</li>
+    </ul>
+  </li>
+  <li>sum_numbers가 N보다 크다면
+    <ul>
+      <li>sum_numbers에 start를 빼고, start를 1 증가시킨다.</li>
+    </ul>
+  </li>
+</ol>
 
 <h3 id="코드">코드</h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">read</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span><span class="p">().</span><span class="n">rstrip</span><span class="p">()</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">read</span><span class="p">())</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">end</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">sum_numbers</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">while</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">N</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">sum_numbers</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">:</span>
+        <span class="n">end</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">sum_numbers</span> <span class="o">+=</span> <span class="n">end</span>
+    <span class="k">elif</span> <span class="n">sum_numbers</span> <span class="o">==</span> <span class="n">N</span><span class="p">:</span>
+        <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">end</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">sum_numbers</span> <span class="o">-=</span> <span class="n">start</span>
+        <span class="n">sum_numbers</span> <span class="o">+=</span> <span class="n">end</span>
+        <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sum_numbers</span> <span class="o">-=</span> <span class="n">start</span>
+        <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">answer</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
 
 
