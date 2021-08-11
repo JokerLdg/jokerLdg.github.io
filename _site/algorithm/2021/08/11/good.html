@@ -156,9 +156,44 @@
 <p><strong><u>좋은 수의 개수를 첫 번째 줄에 출력한다.</u></strong></p>
 
 <h3 id="문제풀이">문제풀이</h3>
+<ol>
+  <li>A 리스트를 정렬한다.</li>
+  <li>0부터 N-1 까지 반복문을 통해 특정 원소(A[i])를 선택하고, 해당 원소를 제외한 리스트를 생성한다.</li>
+  <li>temp 리스트에서 투 포인터를 이용하여 두 원소의 합이 A[i]와 같다면 answer를 증가시킨다.
+    <ul>
+      <li>total이 A[i]보다 작다면 start 1증가</li>
+      <li>total이 A[i]보다 크다면 end 1 감소</li>
+    </ul>
+  </li>
+</ol>
 
 <h3 id="코드">코드</h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">read</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span><span class="p">().</span><span class="n">rstrip</span><span class="p">()</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">read</span><span class="p">())</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">read</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span>
+<span class="n">A</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+
+<span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="k">while</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">+</span> <span class="n">temp</span><span class="p">[</span><span class="n">end</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">total</span> <span class="o">==</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">break</span>
+        <span class="k">elif</span> <span class="n">total</span> <span class="o">&lt;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">end</span> <span class="o">-=</span> <span class="mi">1</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
 </code></pre></div></div>
 
 
