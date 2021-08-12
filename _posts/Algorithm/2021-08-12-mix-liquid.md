@@ -43,10 +43,37 @@ B
 
 
 ### 문제풀이
+해당 문제는 투포인터로 해결 할 수 있다.
 
+1. start, end 를 통해 배열의 양쪽 끝에서부터 각 원소를 더해가며(temp) 최솟값을 찾는다.
+- temp의 값이 음수이면 start를 1 증가한다.
+- temp의 값이 양수이면 end를 1 감소한다.
+
+2. 최솟값을 출력한다.
 
 
 ### 코드
 ```python
+import sys
 
+read = lambda: sys.stdin.readline().rstrip()
+
+N = int(read())
+
+arr = list(map(int, read().split()))
+
+start, end = 0, N-1
+answer = arr[start] + arr[end]
+
+while start < end:
+    temp = arr[start] + arr[end]
+    if abs(answer) > abs(temp):
+        answer = temp
+
+    if temp < 0:
+        start += 1
+    else:
+        end -= 1
+
+print(answer)
 ```
