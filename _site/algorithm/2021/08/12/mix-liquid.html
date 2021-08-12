@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
-    백준 1253번 좋다 (python 파이썬) - Tech
+    백준 14921번 용액 합성하기 (python 파이썬) - Tech
     
   </title>
 
-  <meta name="description" content="백준 1253번 좋다 문제를 Python으로 해결한 문제이다.">
+  <meta name="description" content="백준 14921번 용액 합성하기 문제를 Python으로 해결한 문제이다.">
   <!-- google 웹마스터 -->
   <meta name="google-site-verification" content="1M5pUHiID88fUVGyUOZvd5xyyGEcU37L6sdv7fkh8xg" />
   <!-- //google 웹마스터 -->
@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/algorithm/2021/08/11/good.html">
+  <link rel="canonical" href="http://localhost:4000/algorithm/2021/08/12/mix-liquid.html">
   <link rel="alternate" type="application/rss+xml" title="Tech" href="/feed.xml">
   <link rel="stylesheet" href="/assets/css/syntax.css">
   <link rel="stylesheet" href="/assets/css/custom.css">
@@ -122,9 +122,9 @@
       <div class="row">
         <div class="col-lg-10 col-md-10 mx-auto">
           <div class="post-heading" style="padding:80px 0; color:#000 !important;">
-            <h1 style="font-size:40px !important;">백준 1253번 좋다 (python 파이썬)</h1>
+            <h1 style="font-size:40px !important;">백준 14921번 용액 합성하기 (python 파이썬)</h1>
             <h2 class="subheading" style="font-size:22px !important; color:#868e96 !important;">
-				August 11, 2021
+				August 12, 2021
 			</h2>
           </div>
         </div>
@@ -136,76 +136,48 @@
     <div class="row">
       <div class="col-lg-10 col-md-10 mx-auto">
 
-        <p>백준 1253번 좋다 문제를 Python으로 해결한 문제이다.</p>
+        <p>백준 14921번 용액 합성하기 문제를 Python으로 해결한 문제이다.</p>
 
 <ul>
-  <li><a href="https://www.acmicpc.net/problem/1253" target="_blank">백준 1253번 좋다 문제 링크</a></li>
+  <li><a href="https://www.acmicpc.net/problem/14921" target="_blank">백준 14921번 용액 합성하기 문제 링크</a></li>
 </ul>
 
 <h3 id="문제">문제</h3>
-<p>N개의 수 중에서 어떤 수가 다른 수 두 개의 합으로 나타낼 수 있다면 그 수를 “좋다(GOOD)”고 한다.</p>
+<p>홍익대 화학연구소는 다양한 용액을 보유하고 있다.  각 용액은 -100,000,000부터 100,000,000사이의 특성 값을 갖는데,</p>
 
-<p>N개의 수가 주어지면 그 중에서 좋은 수의 개수는 몇 개인지 출력하라.</p>
+<p>같은 양의 두 용액을 혼합하면, 그 특성값은 두 용액의 특성값의 합이 된다.</p>
 
-<p>수의 위치가 다르면 값이 같아도 다른 수이다.</p>
+<p>당신은 두 용액을 혼합하여 특성값이 0에 가장 가까운 용액을 만들려고 하는데, 각 용액은 10ml시험관에 10ml씩 들어있고, 빈 20ml 시험관이 단 하나 있다.  게다가 용액을 계량할 수 없어서, 두 용액을 섞을 때는 10ml씩 섞어서 20ml로 만드는데, 단 한번밖에 할 수 없다.  그래서 미리 용액의 특성값들을 보고, 어떤 두 용액을 섞을 것인지 정해야 한다.</p>
+
+<p>예를 들어, 연구소에 있는 용액들의 특성값이 [-101, -3, -1, 5, 93]이라고 하자. 이 경우에 특성 값이 각각 -101, 93인 용액을 혼합하면 -8인 용액을 만들 수 있다. 또한 특성값이 5인 용액과 93인 용액을 혼합하면 특성 값이 98인 용액을 만들 수 있다.  모든 가능한 조합을 생각해 보면, 특성값이 2인 용액이 0에 가장 가까운 용액이다.</p>
+
+<p>용액들의 특성값 A_1, … ,A_N이 오름차순으로 주어졌을 때, 이 중 두 개의 용액을 혼합하여 만들 수 있는 0에 가장 가까운 특성값 B를 출력하시오.</p>
 
 <h3 id="입력">입력</h3>
-<p>첫째 줄에는 수의 개수 N(1 ≤ N ≤ 2,000), 두 번째 줄에는 i번째 수를 나타내는 Ai가 N개 주어진다. (|Ai| ≤ 1,000,000,000, Ai는 정수)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>N
+A_1 A_2 … A_N
+</code></pre></div></div>
+<p>2 &lt;= N &lt;= 100,000
+-100,000,000 &lt;=A_i&lt;=100,000,000
+A_(i-1) &lt;= A_i &lt;= A_(i+1)</p>
 
 <h3 id="출력">출력</h3>
-<p><strong><u>좋은 수의 개수를 첫 번째 줄에 출력한다.</u></strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>B
+</code></pre></div></div>
 
 <h3 id="문제풀이">문제풀이</h3>
-<ol>
-  <li>A 리스트를 정렬한다.</li>
-  <li>0부터 N-1 까지 반복문을 통해 특정 원소(A[i])를 선택하고, 해당 원소를 제외한 리스트를 생성한다.</li>
-  <li>temp 리스트에서 투 포인터를 이용하여 두 원소의 합이 A[i]와 같다면 answer를 증가시킨다.
-    <ul>
-      <li>total이 A[i]보다 작다면 start 1증가</li>
-      <li>total이 A[i]보다 크다면 end 1 감소</li>
-    </ul>
-  </li>
-</ol>
 
 <h3 id="코드">코드</h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="n">read</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">sys</span><span class="p">.</span><span class="n">stdin</span><span class="p">.</span><span class="n">readline</span><span class="p">().</span><span class="n">rstrip</span><span class="p">()</span>
-
-<span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">read</span><span class="p">())</span>
-
-<span class="n">A</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">read</span><span class="p">().</span><span class="n">split</span><span class="p">()))</span>
-<span class="n">A</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
-
-<span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-    <span class="n">temp</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
-    <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-
-    <span class="k">while</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">:</span>
-        <span class="n">total</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">+</span> <span class="n">temp</span><span class="p">[</span><span class="n">end</span><span class="p">]</span>
-        <span class="k">if</span> <span class="n">total</span> <span class="o">==</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-            <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">break</span>
-        <span class="k">elif</span> <span class="n">total</span> <span class="o">&lt;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-            <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">end</span> <span class="o">-=</span> <span class="mi">1</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 </code></pre></div></div>
 
 
         <hr>
         <div class="clearfix">
           
-          <a class="btn btn-primary float-left" href="/algorithm/2021/08/10/diet.html" data-toggle="tooltip" data-placement="top" title="백준 1484번 다이어트 (python 파이썬)">&larr; 이전<span class="d-none d-md-inline">
+          <a class="btn btn-primary float-left" href="/algorithm/2021/08/11/good.html" data-toggle="tooltip" data-placement="top" title="백준 1253번 좋다 (python 파이썬)">&larr; 이전<span class="d-none d-md-inline">
               게시물</span></a>
           
-          
-          <a class="btn btn-primary float-right" href="/algorithm/2021/08/12/mix-liquid.html" data-toggle="tooltip" data-placement="top" title="백준 14921번 용액 합성하기 (python 파이썬)">다음<span class="d-none d-md-inline">
-              게시물</span> &rarr;</a>
           
         </div>
 		
